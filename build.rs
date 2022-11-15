@@ -21,6 +21,6 @@ fn main() -> io::Result<()> {
         .args(["-cvq", "libdouble.a", &obj_file])
         .output()?;
 
-    println!(r"cargo:rustc-link-search=native={}", out.display());
+    println!(r"cargo:rustc-link-search=all={}", out.display());
     Ok(())
 }

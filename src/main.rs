@@ -1,4 +1,6 @@
 // extern crate libc;
+mod bindings;
+mod tests;
 
 #[link(name = "double")]
 extern "C" {
