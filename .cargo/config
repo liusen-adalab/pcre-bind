@@ -1,0 +1,3 @@
+[target.x86_64-unknown-linux-gnu.libdouble]
+rustc-link-search = ["/home/sen/rust/pcre"]
+rustc-link-lib = [":libdouble.a"]
