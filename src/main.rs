@@ -53,7 +53,7 @@ fn send_to_server(content: impl AsRef<[u8]>) {
 
     let socket = UdpSocket::bind("127.0.0.1:34254").expect("couldn't bind to address");
     socket
-        .connect("127.0.0.1:56789")
+        .connect(("127.0.0.1", SERVER_PORT_PCRE))
         .expect("connect function failed");
     socket
         .send(content.as_ref())
