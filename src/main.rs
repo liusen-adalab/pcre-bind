@@ -27,7 +27,6 @@ impl<T: AsRef<str>> Find for T {
             )
         };
         let match_data = unsafe { pcre2_match_data_create_from_pattern_8(code, ptr::null_mut()) };
-        let ovector = unsafe { pcre2_get_ovector_pointer_8(match_data) };
         let rc = unsafe {
             pcre2_match_8(
                 code,
@@ -42,6 +41,7 @@ impl<T: AsRef<str>> Find for T {
         if rc == -1 {
             return Ok(None);
         }
+        let ovector = unsafe { pcre2_get_ovector_pointer_8(match_data) };
         let (s, e) = unsafe { (*ovector.offset(0), *ovector.offset(1)) };
 
         Ok(Some(s..e))
